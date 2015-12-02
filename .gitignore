@@ -1,5 +1,10 @@
 /.project
-/dist/
-build
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+.nb-gradle/
 program.log*
 jTessBoxEditor.jar
