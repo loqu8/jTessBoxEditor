@@ -100,7 +100,19 @@ public class GuiWithTrainer extends GuiWithGenerator {
         // make sure all required data files exist before training
         if (selectedMode == TrainingMode.Train_with_Existing_Box || selectedMode == TrainingMode.Dictionary || selectedMode == TrainingMode.Train_from_Scratch) {
             final String lang = jTextFieldLang.getText();
-            boolean otherFilesExist = new File(trainDataDirectory, lang + ".font_properties").exists() && new File(trainDataDirectory, lang + ".frequent_words_list").exists() && new File(trainDataDirectory, lang + ".words_list").exists();
+            
+            msg = String.format("The trainDataDirectory is %1$s", trainDataDirectory);
+            JOptionPane.showMessageDialog(this, msg, DIALOG_TITLE, JOptionPane.INFORMATION_MESSAGE);
+            
+            
+            boolean fontPropsExists = new File(trainDataDirectory, lang + ".font_properties").exists();
+            boolean frequencyExists = new File(trainDataDirectory, lang + ".frequent_words_list").exists()
+                    || new File(trainDataDirectory, lang + ".training_text.unigram_freqs").exists()
+                    || new File(trainDataDirectory, lang + ".training_text.bigram_freqs").exists();
+            boolean wordsListExists = new File(trainDataDirectory, lang + ".words_list").exists()
+                    || new File(trainDataDirectory, lang + ".wordlist").exists();            
+            
+            boolean otherFilesExist = fontPropsExists && frequencyExists && wordsListExists;
 
             if (!otherFilesExist) {
                 msg = String.format("The required file %1$s.font_properties, %1$s.frequent_words_list, or %1$s.words_list does not exist.", lang);
