@@ -1,1 +1,5 @@
 /.project
+/dist/
+build
+program.log
+jTessBoxEditor.jar
