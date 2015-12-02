@@ -102,9 +102,8 @@ public class GuiWithTrainer extends GuiWithGenerator {
             final String lang = jTextFieldLang.getText();
             
             msg = String.format("The trainDataDirectory is %1$s", trainDataDirectory);
-            JOptionPane.showMessageDialog(this, msg, DIALOG_TITLE, JOptionPane.INFORMATION_MESSAGE);
-            
-            
+//            JOptionPane.showMessageDialog(this, msg, DIALOG_TITLE, JOptionPane.INFORMATION_MESSAGE);
+                       
             boolean fontPropsExists = new File(trainDataDirectory, lang + ".font_properties").exists();
             boolean frequencyExists = new File(trainDataDirectory, lang + ".frequent_words_list").exists()
                     || new File(trainDataDirectory, lang + ".training_text.unigram_freqs").exists()
